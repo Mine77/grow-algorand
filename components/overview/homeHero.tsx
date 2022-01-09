@@ -13,20 +13,6 @@ const HomeHero = () => {
         Find out the latest ecosystem programs, projects and activities. Learn,
         join, build, earn and so much more!
       </div>
-      <div className="flex flex-col items-center mt-12 text-center">
-        <span className="relative inline-flex w-full md:w-auto">
-          <a
-            href="#_"
-            type="button"
-            className="inline-flex items-center justify-center w-full px-8 py-4 text-base font-bold leading-6 text-white bg-blue-600 border border-transparent rounded-full md:w-auto hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-600"
-          >
-            Start Now
-          </a>
-        </span>
-        <a href="#" className="mt-3 text-sm text-blue-500">
-          Learn More
-        </a>
-      </div>
     </div>
   );
 };
