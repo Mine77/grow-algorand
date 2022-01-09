@@ -10,8 +10,8 @@ const Home: NextPage = () => {
     <Layout>
       <HomeHero />
       <DevHero />
-      <ProjectHero />
-      <HolderHero />
+      {/* <ProjectHero />
+      <HolderHero /> */}
     </Layout>
   );
 };
