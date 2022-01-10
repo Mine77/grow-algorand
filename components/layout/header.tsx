@@ -12,11 +12,11 @@ const Header = () => {
   const list: HeaderList = [
     {
       text: "Overview",
-      link: "#",
+      link: "/",
     },
     {
-      text: "Resources",
-      link: "#",
+      text: "Opportunities",
+      link: "/opportunities",
     },
     {
       text: "Projects",
@@ -30,6 +30,10 @@ const Header = () => {
       text: "Jobs",
       link: "#",
     },
+    {
+      text: "Resources",
+      link: "#",
+    }
   ];
 
   return (
