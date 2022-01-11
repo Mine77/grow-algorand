@@ -45,7 +45,7 @@ const SideBar = () => {
           <nav className="px-6">
             {sideBarList.map((section, i) => (
               <div key={i}>
-                <p className="text-gray-800 ml-2 w-full border-b-2 pb-2 border-gray-100 mb-4 text-md font-normal">
+                <p className="text-gray-800 ml-2 w-full border-b-2 pb-2 border-gray-100 mb-4 text-lg font-bold">
                   {section.sectionTitle}
                 </p>
                 {section.list.map((item, j) => (
