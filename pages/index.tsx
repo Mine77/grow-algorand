@@ -1,8 +1,8 @@
 import type { NextPage } from "next";
 import Layout from "../components/layout/layout";
+import EventsHero from "../components/overview/eventsHero";
 import HomeHero from "../components/overview/homeHero";
-import HolderHero from "../components/overview/holderHero";
-import DevHero from "../components/overview/devHero";
+import JobsHero from "../components/overview/jobsHero";
 import ProjectHero from "../components/overview/projectHero";
 import ResHero from "../components/overview/resHero";
 
@@ -11,9 +11,12 @@ const Home: NextPage = () => {
     <Layout>
       <HomeHero />
       <ResHero />
-      {/* <DevHero />
+      <div className="">
       <ProjectHero />
-      <HolderHero /> */}
+      <EventsHero />
+      </div>
+      
+      <JobsHero />
     </Layout>
   );
 };

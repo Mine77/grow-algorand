@@ -1,15 +1,15 @@
 const HomeHero = () => {
   return (
-    <div className="container max-w-lg px-4 py-32 mx-auto text-left md:max-w-none md:text-center">
-      <h1 className="text-5xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-6xl lg:text-7xl">
-        <span className="inline md:block">Grow Algorand</span>{" "}
+    <div className="container  px-4 py-32 mx-auto  max-w-none text-center">
+      <h1 className="text-7xl font-extrabold tracking-tight  text-gray-900 text-center leading-none">
+        <span className="inline">Grow Algorand</span>{" "}
       </h1>
-      <h2 className="text-3xl font-extrabold leading-10 tracking-tight text-left text-gray-900 md:text-center sm:leading-none md:text-4xl lg:text-5xl">
-        <span className="relative mt-2 py-1 text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-blue-500 md:inline-block">
+      <h2 className=" font-extrabold leading-none tracking-tight  text-gray-900 text-center  text-5xl">
+        <span className="relative mt-2 py-1 text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-blue-500 inline-block">
           Ecosystem Hub
         </span>
       </h2>
-      <div className="mx-auto mt-5 text-gray-500 md:mt-12 md:max-w-lg md:text-center lg:text-lg">
+      <div className="mx-auto text-gray-500 mt-12 max-w-lg text-center text-lg">
         Find out the latest ecosystem programs, projects and activities. Learn,
         join, build, earn and so much more!
       </div>
