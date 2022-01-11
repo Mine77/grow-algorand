@@ -3,14 +3,14 @@ import { SideBarList } from "./interface";
 const SideBar = () => {
   const sideBarList: SideBarList = [
     {
-      sectionTitle: "Funding",
+      sectionTitle: "For Developers",
       list: [
         {
-          text: "Ecosystem Grant",
+          text: "Learning Material",
           link: "#",
         },
         {
-          text: "Ecosystem VC",
+          text: "Infrastructure",
           link: "#",
         },
         {
@@ -20,19 +20,23 @@ const SideBar = () => {
       ],
     },
     {
-      sectionTitle: "Programs",
+      sectionTitle: "For Projects",
       list: [
         {
-          text: "Algorand Governance",
+          text: "Grant",
+          link: "#",
+        },
+        {
+          text: "Venture Capital",
           link: "#",
         },
       ],
     },
     {
-      sectionTitle: "Others",
+      sectionTitle: "For Community",
       list: [
         {
-          text: "Dev Resources",
+          text: "Governance",
           link: "#",
         },
       ],
