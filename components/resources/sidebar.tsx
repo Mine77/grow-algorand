@@ -3,7 +3,7 @@ import { SideBarList } from "./interface";
 const SideBar = () => {
   const sideBarList: SideBarList = [
     {
-      sectionTitle: "Funding Opportunities",
+      sectionTitle: "Funding",
       list: [
         {
           text: "Ecosystem Grant",
@@ -29,7 +29,7 @@ const SideBar = () => {
       ],
     },
     {
-      sectionTitle: "Resources",
+      sectionTitle: "Others",
       list: [
         {
           text: "Dev Resources",

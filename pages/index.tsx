@@ -4,14 +4,16 @@ import HomeHero from "../components/overview/homeHero";
 import HolderHero from "../components/overview/holderHero";
 import DevHero from "../components/overview/devHero";
 import ProjectHero from "../components/overview/projectHero";
+import ResHero from "../components/overview/resHero";
 
 const Home: NextPage = () => {
   return (
     <Layout>
       <HomeHero />
-      <DevHero />
+      <ResHero />
+      {/* <DevHero />
       <ProjectHero />
-      <HolderHero />
+      <HolderHero /> */}
     </Layout>
   );
 };

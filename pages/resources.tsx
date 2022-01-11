@@ -1,8 +1,8 @@
 import Layout from "../components/layout/layout";
-import Grant from "../components/opportunities/grant";
-import SideBar from "../components/opportunities/sidebar";
+import Grant from "../components/resources/grant";
+import SideBar from "../components/resources/sidebar";
 
-const Opportunities = () => {
+const Resources = () => {
   return (
     <Layout>
       <div className="flex flex-row">
@@ -17,4 +17,4 @@ const Opportunities = () => {
   );
 };
 
-export default Opportunities;
+export default Resources;

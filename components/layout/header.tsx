@@ -15,10 +15,6 @@ const Header = () => {
       link: "/",
     },
     {
-      text: "Opportunities",
-      link: "/opportunities",
-    },
-    {
       text: "Projects",
       link: "#",
     },
@@ -32,7 +28,7 @@ const Header = () => {
     },
     {
       text: "Resources",
-      link: "#",
+      link: "/resources",
     }
   ];
 
