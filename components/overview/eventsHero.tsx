@@ -6,7 +6,7 @@ const EventsHero = () => {
     <div className="flex flex-row items-center w-full py-10">
       <div className="w-full pb-6 space-y-6 pl-24">
         <h1 className="text-6xl font-extrabold tracking-tight text-gray-900">
-          <span className="inline">Participate In</span> <br />
+          <span className="inline">Participate in</span> <br />
           <span className="inline text-transparent bg-clip-text bg-gradient-to-br from-blue-600 to-blue-500">
             Community Events
           </span>

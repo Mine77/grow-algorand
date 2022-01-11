@@ -11,11 +11,8 @@ const Home: NextPage = () => {
     <Layout>
       <HomeHero />
       <ResHero />
-      <div className="">
       <ProjectHero />
       <EventsHero />
-      </div>
-      
       <JobsHero />
     </Layout>
   );
