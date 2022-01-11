@@ -1,8 +1,7 @@
-import Layout from "../components/layout/layout";
-import Grant from "../components/resources/grant";
-import SideBar from "../components/resources/sidebar";
+import Layout from "../../components/layout/layout";
+import SideBar from "../../components/resources/sidebar";
 
-const Resources = () => {
+const ResLayout = (props: { children: React.ReactNode }) => {
   return (
     <Layout>
       <div className="flex flex-row">
@@ -10,11 +9,11 @@ const Resources = () => {
           <SideBar />
         </div>
         <div className="flex px-4">
-          <Grant />
+          <div>{props.children}</div>
         </div>
       </div>
     </Layout>
   );
 };
 
-export default Resources;
+export default ResLayout;

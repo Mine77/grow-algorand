@@ -1,7 +1,9 @@
-import { SideBarList } from "./interface";
+import { useRouter } from "next/router";
 
 const SideBar = () => {
-  const sideBarList: SideBarList = [
+  const router = useRouter();
+  console.log(router)
+  const sideBarList = [
     {
       sectionTitle: "For Developers",
       list: [

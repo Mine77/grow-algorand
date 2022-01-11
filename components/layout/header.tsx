@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { HeaderList } from "./interface";
 
 const Header = () => {
@@ -8,6 +9,8 @@ const Header = () => {
     unSelectedStyle:
       "inline-block w-full py-2 mx-0 font-medium text-left text-gray-700 md:w-auto md:px-0 md:mx-2 hover:text-sky-600 lg:mx-3 md:text-center",
   };
+
+  const router = useRouter();
 
   const list: HeaderList = [
     {
@@ -28,7 +31,7 @@ const Header = () => {
     },
     {
       text: "Resources",
-      link: "/resources",
+      link: "/resources/grant",
     }
   ];
 
