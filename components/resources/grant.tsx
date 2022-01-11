@@ -2,10 +2,10 @@ const Grant = () => {
   return (
     <div>
       <div className=" pt-6 pb-8 lg:pb-16">
-        <h1 className="font-body font-semibold text-primary dark:text-white text-4xl md:text-5xl lg:text-6xl pt-3">
+        <h1 className="font-body font-semibold text-primary text-4xl md:text-5xl lg:text-6xl pt-3">
           Algorand Foundation Grants
         </h1>
-        <p className="font-body font-light text-primary dark:text-white text-xl pt-3">
+        <p className="font-body font-light text-primary text-xl pt-3">
           250M ALGO grant pool for every ecosystem builder
         </p>
         <a
@@ -18,12 +18,12 @@ const Grant = () => {
 
       <div className=" py-3 lg:pb-20">
         <div className="flex items-center pb-6">
-          <h3 className="font-body font-semibold text-primary dark:text-white text-2xl">
+          <h3 className="font-body font-semibold text-primary text-2xl">
             Introduction
           </h3>
         </div>
         <div>
-          <p className="font-body font-light text-primary dark:text-white">
+          <p className="font-body font-light text-primary">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
             eiusmod tempor incididunt ut labore et dolore magna aliqua. Nibh
             mauris cursus mattis molestie. Et leo duis ut diam. Sit amet tellus

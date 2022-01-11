@@ -39,7 +39,7 @@ const SideBar = () => {
     },
   ];
   return (
-    <div className="relative bg-white dark:bg-gray-800">
+    <div className="relative bg-white ">
       <div className="flex flex-col sm:flex-row sm:justify-around">
         <div className="w-72 h-full">
           <nav className="px-6">
@@ -52,7 +52,7 @@ const SideBar = () => {
                   <a
                     key={j}
                     href={item.link}
-                    className="hover:text-gray-800 font-thin text-gray-500 dark:text-gray-400 hover:bg-gray-100 flex p-2 my-4 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200 "
+                    className="hover:text-gray-800 font-thin text-gray-500  hover:bg-gray-100 flex p-2 my-4 transition-colors duration-200 "
                   >
                     <span className="mx-4 text-md font-normal">
                       {item.text}
