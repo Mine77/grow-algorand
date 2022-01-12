@@ -35,7 +35,7 @@ const ResHero = () => {
             </p>
             <div className="flex flex-row">
               <Link href="/resources/grant" passHref>
-                <a className="flex items-center px-10 py-3 mb-3 text-lg text-white bg-blue-600 rounded-md w-auto hover:bg-blue-500">
+                <a className="flex items-center px-10 py-3 mb-3 text-lg text-white bg-blue-600 rounded-md w-auto hover:bg-blue-700">
                   Explore
                 </a>
               </Link>
