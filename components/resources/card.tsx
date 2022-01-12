@@ -8,7 +8,7 @@ const ResCard = (props: {
   const imagePath = "/images/" + props.image;
   return (
     <div className="bg-white rounded-lg shadow-md m-4 hover:scale-105 duration-200 transition-all">
-      <a href={props.link} target="_blank">
+      <a href={props.link} target="_blank" rel="noreferrer">
         <div className="flex items-center justify-center p-8">
           <Image
             width={150}
