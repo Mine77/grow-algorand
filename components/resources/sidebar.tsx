@@ -1,23 +1,24 @@
+import Link from "next/link";
 import { useRouter } from "next/router";
 
 const SideBar = () => {
   const router = useRouter();
-  console.log(router)
+  console.log(router);
   const sideBarList = [
     {
       sectionTitle: "For Developers",
       list: [
         {
           text: "Learning Material",
-          link: "#",
+          link: "/resources/learning",
         },
         {
           text: "Infrastructure",
-          link: "#",
+          link: "/resources/dev-tools",
         },
         {
           text: "Bounty",
-          link: "#",
+          link: "/resources/bounty",
         },
       ],
     },
@@ -26,11 +27,11 @@ const SideBar = () => {
       list: [
         {
           text: "Grant",
-          link: "#",
+          link: "/resources/grant",
         },
         {
           text: "Venture Capital",
-          link: "#",
+          link: "/resources/vc",
         },
       ],
     },
@@ -39,7 +40,7 @@ const SideBar = () => {
       list: [
         {
           text: "Governance",
-          link: "#",
+          link: "/resources/governance",
         },
       ],
     },
@@ -55,15 +56,13 @@ const SideBar = () => {
                   {section.sectionTitle}
                 </p>
                 {section.list.map((item, j) => (
-                  <a
-                    key={j}
-                    href={item.link}
-                    className="hover:text-gray-800 font-thin text-gray-500  hover:bg-gray-100 flex p-2 my-4 transition-colors duration-200 "
-                  >
-                    <span className="mx-4 text-md font-normal">
-                      {item.text}
-                    </span>
-                  </a>
+                  <Link key={j} href={item.link} passHref>
+                    <a className="hover:text-gray-800 hover:bg-gray-100 font-thin text-gray-500 flex p-2 my-4 transition-colors duration-200 ">
+                      <span className="mx-4 text-md font-normal">
+                        {item.text}
+                      </span>
+                    </a>
+                  </Link>
                 ))}
               </div>
             ))}
