@@ -3,17 +3,16 @@ import { useRouter } from "next/router";
 
 const SideBar = () => {
   const router = useRouter();
-  console.log(router);
   const sideBarList = [
     {
       sectionTitle: "For Developers",
       list: [
         {
-          text: "Learning Material",
+          text: "Learning",
           link: "/resources/learning",
         },
         {
-          text: "Infrastructure",
+          text: "Dev Tools",
           link: "/resources/dev-tools",
         },
         {
