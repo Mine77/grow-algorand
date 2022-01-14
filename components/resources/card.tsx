@@ -5,16 +5,15 @@ const ResCard = (props: {
   link: string;
   image: string;
 }) => {
-  const imagePath = "/images/" + props.image;
   return (
-    <div className="bg-white rounded-lg shadow-md m-4 hover:scale-105 duration-200 transition-all">
+    <div className="bg-white w-60 rounded-lg shadow-md m-4 hover:scale-105 duration-200 transition-all">
       <a href={props.link} target="_blank" rel="noreferrer">
-        <div className="flex items-center justify-center p-8">
+        <div className="flex items-center justify-center py-2">
           <Image
-            width={150}
-            height={150}
+            width={200}
+            height={200}
             className="rounded-lg"
-            src={imagePath}
+            src={props.image}
             alt="item image"
           />
         </div>
