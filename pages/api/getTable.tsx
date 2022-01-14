@@ -2,14 +2,12 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import Airtable from "airtable";
 
-const Table = {
-  Learning: {
-    view: {
-      Grid: "Grid view",
-      Gallery: "Gallery",
-    },
-    keys: ["Title", "Description", "Link", "Image"],
-  },
+const Table = ["Learning", "DevTools", "VentureCapital"];
+
+const TableKeys = ["Title", "Description", "Link", "Image"];
+const TableView = {
+  Grid: "Grid view",
+  Gallery: "Gallery",
 };
 
 export default async function handler(
@@ -18,29 +16,28 @@ export default async function handler(
 ) {
   const { table } = req.query;
 
-  const tableName: string = String(table);
+  const tableName = String(table);
 
-  if (!(tableName in Table)) {
-    res.status(400).json({ error: "base not found" });
+  if (!Table.includes(tableName)) {
+    res.status(400).json({ error: "Table not found" });
     return;
   }
 
   const apiKey = process.env.AIRTABLE_API;
   const baseId = process.env.AIRTABLE_BASE;
   const base = new Airtable({ apiKey: apiKey }).base(String(baseId));
-  const tableKey = tableName as keyof typeof Table;
 
   try {
     const records = await base(tableName)
       .select({
-        view: Table[tableKey].view.Grid,
+        view: TableView.Grid,
       })
       .firstPage();
     var dataSet: {}[] = [];
 
     records.forEach((record) => {
       var data = {};
-      Table[tableKey].keys.map((key) => {
+      TableKeys.map((key) => {
         const value = record.get(key);
         data = { ...data, [key]: value };
       });

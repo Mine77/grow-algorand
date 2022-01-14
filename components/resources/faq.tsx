@@ -4,7 +4,7 @@ const ResFAQ = (props: { content: Array<{ title: string; text: string }> }) => {
       <ul className="flex items-start gap-8 flex-wrap">
         {props.content.map((item, i) => (
           <li key={i} className="w-2/5">
-            <h4 className="text-xl font-medium leading-6 text-blue-600">
+            <h4 className="text-xl font-medium leading-6 text-gray-900">
               {item.title}
             </h4>
             <p className="mt-2">

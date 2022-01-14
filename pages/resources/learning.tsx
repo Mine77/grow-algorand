@@ -1,4 +1,3 @@
-import { useState } from "react";
 import ResHeader from "../../components/resources/header";
 import ResLayout from "../../components/resources/layout";
 import useSWR from "swr";
@@ -19,15 +18,6 @@ interface Paylaod {
 }
 
 const Learning = () => {
-  const cardsDummy = [
-    {
-      title: "Developer Portal",
-      description: "Documentations and tutorials",
-      link: "https://developer.algorand.org/",
-      image: "logo.png",
-    },
-  ];
-
   const url = "/api/getTable?table=Learning";
   const fetcher = (url: RequestInfo) => fetch(url).then((res) => res.json());
   const { data, error } = useSWR<Paylaod, string>(url, fetcher);

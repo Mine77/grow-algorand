@@ -6,20 +6,22 @@ const ResCard = (props: {
   image: string;
 }) => {
   return (
-    <div className="bg-white w-60 rounded-lg shadow-md m-4 hover:scale-105 duration-200 transition-all">
+    <div className="bg-white w-48 rounded-xl shadow-md mx-2 my-4 hover:scale-105 duration-200 transition-all">
       <a href={props.link} target="_blank" rel="noreferrer">
-        <div className="flex items-center justify-center py-2">
-          <Image
-            width={200}
-            height={200}
-            className="rounded-lg"
-            src={props.image}
-            alt="item image"
-          />
+        <div className="p-3">
+          <div className="relative w-full h-48 justify-center">
+            <Image
+              layout="fill"
+              objectFit="contain"
+              sizes="100%"
+              src={props.image}
+              alt="item image"
+            />
+          </div>
         </div>
 
-        <div className="px-5 pb-5">
-          <h3 className="text-xl font-semibold text-gray-900 ">
+        <div className=" px-3 pb-5">
+          <h3 className="text-lg font-semibold text-gray-900 ">
             {props.title}
           </h3>
           <p className="text-sm font-">{props.description}</p>
