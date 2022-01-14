@@ -25,11 +25,13 @@ export default async function handler(
   const baseId = process.env.AIRTABLE_BASE;
   const base = new Airtable({ apiKey: apiKey }).base(String(baseId));
 
+  const filter = `{Category}="${category}"`;
+
   try {
     const records = await base("Data")
       .select({
         view: TableView.Grid,
-        filterByFormula: `{Category}="${category}"`,
+        filterByFormula: filter,
       })
       .firstPage();
     var dataSet: {}[] = [];
