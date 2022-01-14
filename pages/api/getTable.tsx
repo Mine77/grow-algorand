@@ -2,9 +2,9 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import Airtable from "airtable";
 
-const Table = ["Learning", "DevTools", "VentureCapital"];
+const Category = ["Education", "DevTools", "VentureCapital"];
 
-const TableKeys = ["Title", "Description", "Link", "Image"];
+const TableKeys = ["Title", "Category", "Description", "Link", "Image"];
 const TableView = {
   Grid: "Grid view",
   Gallery: "Gallery",
@@ -14,12 +14,10 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
-  const { table } = req.query;
+  const category = String(req.query.category);
 
-  const tableName = String(table);
-
-  if (!Table.includes(tableName)) {
-    res.status(400).json({ error: "Table not found" });
+  if (!Category.includes(category)) {
+    res.status(400).json({ error: "Category not found" });
     return;
   }
 
@@ -28,9 +26,10 @@ export default async function handler(
   const base = new Airtable({ apiKey: apiKey }).base(String(baseId));
 
   try {
-    const records = await base(tableName)
+    const records = await base("Data")
       .select({
         view: TableView.Grid,
+        filterByFormula: `{Category}="${category}"`,
       })
       .firstPage();
     var dataSet: {}[] = [];

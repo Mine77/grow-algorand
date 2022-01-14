@@ -18,7 +18,7 @@ interface Paylaod {
 }
 
 const VC = () => {
-  const url = "/api/getTable?table=DevTools";
+  const url = "/api/getTable?category=DevTools";
   const fetcher = (url: RequestInfo) => fetch(url).then((res) => res.json());
   const { data, error } = useSWR<Paylaod, string>(url, fetcher);
   if (error) console.log(error);

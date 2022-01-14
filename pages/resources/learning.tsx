@@ -18,7 +18,7 @@ interface Paylaod {
 }
 
 const Learning = () => {
-  const url = "/api/getTable?table=Learning";
+  const url = "/api/getTable?category=Education";
   const fetcher = (url: RequestInfo) => fetch(url).then((res) => res.json());
   const { data, error } = useSWR<Paylaod, string>(url, fetcher);
   if (error) console.log(error);
