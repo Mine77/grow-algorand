@@ -3,6 +3,10 @@ import { useRouter } from "next/router";
 
 const SideBar = () => {
   const router = useRouter();
+  const intro = {
+    title: "Introduction",
+    link: "/resources/intro",
+  };
   const sideBarList = [
     {
       sectionTitle: "For Developers",

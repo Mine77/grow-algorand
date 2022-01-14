@@ -31,8 +31,8 @@ const Header = () => {
     },
     {
       text: "Resources",
-      link: "/resources/grant",
-    }
+      link: "/resources/learning",
+    },
   ];
 
   return (

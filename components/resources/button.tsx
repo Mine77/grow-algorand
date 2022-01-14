@@ -1,6 +1,6 @@
 const Button = (props: { text: string; link: string }) => {
   return (
-    <div className="py-6">
+    <div className="py-3">
       <a href={props.link} target="_blank" rel="noreferrer">
         <button
           type="button"

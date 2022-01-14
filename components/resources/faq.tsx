@@ -1,6 +1,6 @@
 const ResFAQ = (props: { content: Array<{ title: string; text: string }> }) => {
   return (
-    <div className="max-w-screen-xl mx-auto">
+    <div className="max-w-screen-xl mx-auto py-6">
       <ul className="flex items-start gap-8 flex-wrap">
         {props.content.map((item, i) => (
           <li key={i} className="w-2/5">
@@ -8,7 +8,9 @@ const ResFAQ = (props: { content: Array<{ title: string; text: string }> }) => {
               {item.title}
             </h4>
             <p className="mt-2">
-              <span className="text-base leading-6 text-gray-800">{item.text}</span>
+              <span className="text-base leading-6 text-gray-800">
+                {item.text}
+              </span>
             </p>
           </li>
         ))}
