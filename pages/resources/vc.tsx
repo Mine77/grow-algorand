@@ -37,7 +37,7 @@ const VC = () => {
         {cards === undefined
           ? null
           : cards.map((card, i) => (
-              <div className="flex">
+              <div key={i} className="flex">
                 <ResCard
                   key={i}
                   title={card.Title}
