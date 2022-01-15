@@ -9,37 +9,28 @@ const SideBar = () => {
   };
   const sideBarList = [
     {
-      sectionTitle: "For Developers",
+      sectionTitle: "Category",
       list: [
         {
-          text: "Learning",
-          link: "/resources/learning",
+          text: "Application",
+          link: "#",
         },
         {
-          text: "Bounty",
-          link: "/resources/bounty",
+          text: "DevTools",
+          link: "#",
         },
       ],
     },
     {
-      sectionTitle: "For Projects",
+      sectionTitle: "Tags",
       list: [
         {
           text: "Grant",
-          link: "/resources/grant",
+          link: "#",
         },
         {
           text: "Venture Capital",
-          link: "/resources/vc",
-        },
-      ],
-    },
-    {
-      sectionTitle: "For Community",
-      list: [
-        {
-          text: "Governance",
-          link: "/resources/governance",
+          link: "#",
         },
       ],
     },

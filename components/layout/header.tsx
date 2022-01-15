@@ -18,8 +18,8 @@ const Header = () => {
       link: "/",
     },
     {
-      text: "Projects",
-      link: "#",
+      text: "Explore",
+      link: "/explore",
     },
     {
       text: "Events",

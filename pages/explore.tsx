@@ -1,8 +1,7 @@
-import ResHeader from "../../components/resources/header";
-import ResLayout from "../../components/resources/layout";
 import useSWR from "swr";
 import Airtable from "airtable";
-import ResCard from "../../components/resources/card";
+import ExLayout from "../components/explore/layout";
+import ExCard from "../components/explore/card";
 
 interface Card {
   Title: string;
@@ -17,7 +16,7 @@ interface Paylaod {
   res: Cards;
 }
 
-const VC = () => {
+const Explore = () => {
   const url = "/api/getTable?category=DevTools";
   const fetcher = (url: RequestInfo) => fetch(url).then((res) => res.json());
   const { data, error } = useSWR<Paylaod, string>(url, fetcher);
@@ -28,17 +27,13 @@ const VC = () => {
   console.log(cards);
 
   return (
-    <ResLayout>
-      <ResHeader
-        title="Dev Tools"
-        description="Boost your development performance with some handy tools"
-      />
+    <ExLayout>
       <div className="flex flex-wrap gap-8">
         {cards === undefined
           ? null
           : cards.map((card, i) => (
               <div key={i} className="flex">
-                <ResCard
+                <ExCard
                   key={i}
                   title={card.Title}
                   description={card.Description}
@@ -48,8 +43,8 @@ const VC = () => {
               </div>
             ))}
       </div>
-    </ResLayout>
+    </ExLayout>
   );
 };
 
-export default VC;
+export default Explore;
