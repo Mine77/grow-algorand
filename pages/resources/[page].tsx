@@ -7,11 +7,28 @@ import Custom404 from "../404";
 import { PageContent } from "../../components/resources/pageContent";
 import ResCards, { Cards } from "../../components/resources/cards";
 import useSWR from "swr";
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 
-const Resources: NextPage = () => {
-  const router = useRouter();
-  const page = String(router.query.page);
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  // this will be called server-side only
+  const params = context.params;
+
+  if (!params || !(String(params.page) in PageContent)) {
+    return { notFound: true };
+  }
+  return {
+    props: {
+      page: params.page,
+    },
+  };
+};
+
+interface Props {
+  page: string;
+}
+
+const Resources: NextPage<Props> = (props) => {
+  const page = String(props.page);
   const pageKey = page as keyof typeof PageContent;
   const pageContent = PageContent[pageKey];
 
@@ -35,7 +52,7 @@ const Resources: NextPage = () => {
         <Button text={pageContent.button.text} link={pageContent.button.link} />
       ) : null}
       {pageContent.faq ? <ResFAQ content={pageContent.faq} /> : null}
-      {pageContent.tableName && cardsData ? (
+      {pageContent.tableName ? (
         <ResCards tableName={pageContent.tableName} cards={cardsData} />
       ) : null}
     </ResLayout>
