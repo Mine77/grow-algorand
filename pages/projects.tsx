@@ -9,6 +9,8 @@ interface Card {
   Description: string;
   Link: string;
   Image: Array<Airtable.Attachment>;
+  Category: string;
+  Tags: Array<string>;
 }
 
 interface Cards extends Array<Card> {}
@@ -25,11 +27,30 @@ const Projects = () => {
 
   const cards = data === undefined ? undefined : data.res;
 
+  var filterItem: {
+    category: string[];
+    tags: string[];
+  } = {
+    category: [],
+    tags: [],
+  };
+
+  cards?.map((card) => {
+    if (!filterItem.category.includes(card.Category)) {
+      filterItem.category.push(card.Category);
+    }
+    card.Tags.map((tag) => {
+      if (!filterItem.tags.includes(tag)) filterItem.tags.push(tag);
+    });
+  });
+
+  console.log(filterItem);
+
   return (
     <Layout>
       <div className="flex flex-row">
         <div className="flex mt-10 border-r-2 border-gray-100">
-          <Filter />
+          <Filter filterItem={filterItem} />
         </div>
         <div className="flex px-4">
           <div>

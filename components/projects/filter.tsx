@@ -1,60 +1,86 @@
 import Link from "next/link";
-import { useRouter } from "next/router";
+import {
+  AnchorHTMLAttributes,
+  createRef,
+  DetailedHTMLProps,
+  MouseEventHandler,
+  useRef,
+  useState,
+} from "react";
 
-const Filter = () => {
-  const router = useRouter();
-  const intro = {
-    title: "Introduction",
-    link: "/resources/intro",
+interface FilterState {
+  category: {
+    all: boolean;
+    application: boolean;
+    devTools: boolean;
   };
+  Tags: {
+    all: boolean;
+    application: boolean;
+    devTools: boolean;
+  };
+}
+
+const unSelectedStyle =
+  "hover:text-gray-800 hover:bg-blue-100  p-2 mx-1 my-2 transition-colors duration-200 flex flex-row items-center text-gray-500 ml-2 text-md font-normal rounded-xl w-full";
+const seletedStyle =
+  "hover:bg-blue-500  p-2 mx-1 my-2 transition-colors duration-200 flex flex-row items-center text-white ml-2 text-md font-normal bg-blue-500 rounded-xl w-full";
+
+interface Props {
+  filterItem: {
+    category: Array<string>;
+    tags: Array<string>;
+  };
+}
+
+const Filter = (props: Props) => {
+  const ref = useRef(null);
   const sideBarList = [
     {
       sectionTitle: "Category",
-      list: [
-        { text: "All", link: "#" },
-        {
-          text: "Application",
-          link: "#",
-        },
-        {
-          text: "DevTools",
-          link: "#",
-        },
-      ],
+      list: props.filterItem.category,
     },
     {
       sectionTitle: "Tags",
-      list: [
-        { text: "All", link: "#" },
-        {
-          text: "Grant",
-          link: "#",
-        },
-        {
-          text: "Venture Capital",
-          link: "#",
-        },
-      ],
+      list: props.filterItem.tags,
     },
   ];
+  const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
+    const target = event.target as Element;
+    target.className =
+      target.className === seletedStyle ? unSelectedStyle : seletedStyle;
+    if (target.id === "Category.All") {
+      (ref.current as unknown as Element).className = unSelectedStyle;
+      console.log(target.id);
+    }
+  };
   return (
     <div className="relative bg-white ">
-      <div className="flex flex-col sm:flex-row sm:justify-around">
-        <div className="w-72 h-full">
+      <div className="flex flex-col">
+        <div className="w-56 h-full">
           <nav className="px-6">
             {sideBarList.map((section, i) => (
               <div key={i}>
                 <p className="text-gray-800 ml-2 w-full border-b-2 pb-2 border-gray-100 mb-4 text-lg font-bold">
                   {section.sectionTitle}
                 </p>
+                <button
+                  id={`${section.sectionTitle}.All`}
+                  className={seletedStyle}
+                  onClick={handleClick}
+                >
+                  All
+                </button>
                 {section.list.map((item, j) => (
-                  <Link key={j} href={item.link} passHref>
-                    <a className="hover:text-gray-800 hover:bg-gray-100 font-thin text-gray-500 flex p-2 my-4 transition-colors duration-200 ">
-                      <span className="mx-4 text-md font-normal">
-                        {item.text}
-                      </span>
-                    </a>
-                  </Link>
+                  <button
+                    key={j}
+                    ref={ref}
+                    id={`${section.sectionTitle}.${item}`}
+                    className={unSelectedStyle}
+                    onClick={handleClick}
+                  >
+                    {item}
+                  </button>
                 ))}
               </div>
             ))}
