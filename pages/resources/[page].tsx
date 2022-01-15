@@ -5,16 +5,26 @@ import ResHeader from "../../components/resources/header";
 import ResLayout from "../../components/resources/layout";
 import Custom404 from "../404";
 import { PageContent } from "../../components/resources/pageContent";
-import ResCards from "../../components/resources/cards";
+import ResCards, { Cards } from "../../components/resources/cards";
+import useSWR from "swr";
+import { NextPage } from "next";
 
-const Bounty = () => {
+const Resources: NextPage = () => {
   const router = useRouter();
   const page = String(router.query.page);
   const pageKey = page as keyof typeof PageContent;
   const pageContent = PageContent[pageKey];
 
-  if (pageContent === undefined) return <Custom404 />;
+  const url =
+    pageContent && pageContent.tableName
+      ? `/api/getRes?name=${pageContent.tableName}`
+      : null;
+  const fetcher = (url: RequestInfo) => fetch(url).then((res) => res.json());
+  const { data, error } = useSWR<{ res: Cards }, string>(url, fetcher);
+  if (error) console.log(error);
+  const cardsData = data === undefined ? undefined : data.res;
 
+  if (pageContent === undefined) return <Custom404 />;
   return (
     <ResLayout>
       <ResHeader
@@ -25,11 +35,11 @@ const Bounty = () => {
         <Button text={pageContent.button.text} link={pageContent.button.link} />
       ) : null}
       {pageContent.faq ? <ResFAQ content={pageContent.faq} /> : null}
-      {pageContent.tableName ? (
-        <ResCards tableName={pageContent.tableName} />
+      {pageContent.tableName && cardsData ? (
+        <ResCards tableName={pageContent.tableName} cards={cardsData} />
       ) : null}
     </ResLayout>
   );
 };
 
-export default Bounty;
+export default Resources;
