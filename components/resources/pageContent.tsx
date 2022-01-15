@@ -1,34 +1,8 @@
-// export interface CardsPageContent {
-//   title: string;
-//   description: string;
-//   category: string;
-// }
-
-// export interface FaqPageContent {
-//   title: string;
-//   description: string;
-//   button: {
-//     text: string;
-//     link: string;
-//   };
-//   faq: Array<{
-//     title: string;
-//     text: string;
-//   }>;
-// }
-
-// interface ContentType {
-//   learning: CardsPageContent;
-//   vc: CardsPageContent;
-//   bounty: FaqPageContent;
-//   governance: FaqPageContent;
-// }
-
 interface Content {
   [key: string]: {
     title: string;
     description: string;
-    cardCategory?: string;
+    tableName?: string;
     button?: {
       text: string;
       link: string;
@@ -44,12 +18,12 @@ export const PageContent: Content = {
   learning: {
     title: "Learning Resources",
     description: "Learn from the basics to the advanced",
-    cardCategory: "Education",
+    tableName: "Learning",
   },
   vc: {
     title: "Venture Capital",
     description: "Accelerate your projects with some funding",
-    cardCategory: "VentureCapital",
+    tableName: "VC",
   },
 
   bounty: {

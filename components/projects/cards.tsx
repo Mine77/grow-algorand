@@ -15,8 +15,8 @@ interface Paylaod {
   res: Cards;
 }
 
-const ResCards = (props: { tableName: string }) => {
-  const url = `/api/getRes?name=${props.tableName}`;
+const ProjectCards = (props: { tableName: string }) => {
+  const url = `/api/getCards?name=${props.tableName}`;
   const fetcher = (url: RequestInfo) => fetch(url).then((res) => res.json());
   const { data, error } = useSWR<Paylaod, string>(url, fetcher);
   if (error) console.log(error);
@@ -42,4 +42,4 @@ const ResCards = (props: { tableName: string }) => {
   );
 };
 
-export default ResCards;
+export default ProjectCards;

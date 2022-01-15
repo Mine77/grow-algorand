@@ -5,7 +5,7 @@ import ResHeader from "../../components/resources/header";
 import ResLayout from "../../components/resources/layout";
 import Custom404 from "../404";
 import { PageContent } from "../../components/resources/pageContent";
-import Cards from "../../components/resources/cards";
+import ResCards from "../../components/resources/cards";
 
 const Bounty = () => {
   const router = useRouter();
@@ -25,8 +25,8 @@ const Bounty = () => {
         <Button text={pageContent.button.text} link={pageContent.button.link} />
       ) : null}
       {pageContent.faq ? <ResFAQ content={pageContent.faq} /> : null}
-      {pageContent.cardCategory ? (
-        <Cards category={pageContent.cardCategory} />
+      {pageContent.tableName ? (
+        <ResCards tableName={pageContent.tableName} />
       ) : null}
     </ResLayout>
   );

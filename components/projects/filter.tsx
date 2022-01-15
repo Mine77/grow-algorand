@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-const SideBar = () => {
+const Filter = () => {
   const router = useRouter();
   const intro = {
     title: "Introduction",
@@ -11,6 +11,7 @@ const SideBar = () => {
     {
       sectionTitle: "Category",
       list: [
+        { text: "All", link: "#" },
         {
           text: "Application",
           link: "#",
@@ -24,6 +25,7 @@ const SideBar = () => {
     {
       sectionTitle: "Tags",
       list: [
+        { text: "All", link: "#" },
         {
           text: "Grant",
           link: "#",
@@ -63,4 +65,4 @@ const SideBar = () => {
   );
 };
 
-export default SideBar;
+export default Filter;
