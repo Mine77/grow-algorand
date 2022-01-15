@@ -1,5 +1,5 @@
 import Image from "next/image";
-const ExCard = (props: {
+const ProjectCard = (props: {
   title: string;
   description: string;
   link: string;
@@ -16,6 +16,7 @@ const ExCard = (props: {
               sizes="100%"
               src={props.image}
               alt="item image"
+              priority
             />
           </div>
         </div>
@@ -31,4 +32,4 @@ const ExCard = (props: {
   );
 };
 
-export default ExCard;
+export default ProjectCard;

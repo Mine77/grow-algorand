@@ -52,9 +52,7 @@ const Resources: NextPage<Props> = (props) => {
         <Button text={pageContent.button.text} link={pageContent.button.link} />
       ) : null}
       {pageContent.faq ? <ResFAQ content={pageContent.faq} /> : null}
-      {pageContent.tableName ? (
-        <ResCards tableName={pageContent.tableName} cards={cardsData} />
-      ) : null}
+      {pageContent.tableName ? <ResCards cards={cardsData} /> : null}
     </ResLayout>
   );
 };

@@ -2,6 +2,7 @@ import useSWR from "swr";
 import Airtable from "airtable";
 import Layout from "../components/layout/layout";
 import Filter from "../components/projects/filter";
+import ProjectCards from "../components/projects/cards";
 
 interface Card {
   Title: string;
@@ -24,8 +25,6 @@ const Projects = () => {
 
   const cards = data === undefined ? undefined : data.res;
 
-  console.log(cards);
-
   return (
     <Layout>
       <div className="flex flex-row">
@@ -33,7 +32,9 @@ const Projects = () => {
           <Filter />
         </div>
         <div className="flex px-4">
-          <div>Here are the cards</div>
+          <div>
+            <ProjectCards cards={cards} />
+          </div>
         </div>
       </div>
     </Layout>

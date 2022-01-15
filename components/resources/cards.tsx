@@ -1,4 +1,3 @@
-import useSWR from "swr";
 import Airtable from "airtable";
 import ResCard from "./card";
 
@@ -11,7 +10,7 @@ interface Card {
 
 export interface Cards extends Array<Card> {}
 
-const ResCards = (props: { tableName: string; cards: Cards | undefined }) => {
+const ResCards = (props: { cards: Cards | undefined }) => {
   return (
     <div className="flex flex-wrap gap-8">
       {props.cards === undefined ? (

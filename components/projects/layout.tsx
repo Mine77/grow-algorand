@@ -1,7 +1,7 @@
 import Layout from "../layout/layout";
 import Filter from "./filter";
 
-const ExLayout = (props: { children: React.ReactNode }) => {
+const ProjectLayout = (props: { children: React.ReactNode }) => {
   return (
     <Layout>
       <div className="flex flex-row">
@@ -16,4 +16,4 @@ const ExLayout = (props: { children: React.ReactNode }) => {
   );
 };
 
-export default ExLayout;
+export default ProjectLayout;
