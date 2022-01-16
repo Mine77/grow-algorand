@@ -12,8 +12,6 @@ const Home: NextPage = () => {
       <HomeHero />
       <ResHero />
       <ProjectHero />
-      <EventsHero />
-      <JobsHero />
     </Layout>
   );
 };
