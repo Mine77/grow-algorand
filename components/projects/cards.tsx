@@ -13,7 +13,7 @@ const ProjectCards = (props: {
   filterState: FilterState | undefined;
 }) => {
   return (
-    <div className="flex flex-wrap gap-8">
+    <div className="flex flex-wrap w-full items-begin justify-begin">
       {props.cards === undefined ? (
         <div className="flex items-center justify-center w-full">
           <p className="text-xl animate-pulse text-center">Loading...</p>

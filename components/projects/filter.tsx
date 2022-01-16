@@ -1,4 +1,11 @@
-import { MouseEventHandler, useState } from "react";
+import {
+  Dispatch,
+  MouseEventHandler,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
+import { FilterState } from "./cards";
 
 const unSelectedStyle =
   "hover:text-gray-800 hover:bg-blue-100  p-2 mx-1 my-2 transition-colors duration-200 flex flex-row items-center text-gray-500 ml-2 text-md font-normal rounded-xl w-full";
@@ -10,6 +17,7 @@ interface Props {
     category: Array<string>;
     tags: Array<string>;
   };
+  setFilterState: Dispatch<SetStateAction<FilterState>>;
 }
 
 const Filter = (props: Props) => {
@@ -31,6 +39,32 @@ const Filter = (props: Props) => {
   itemStyle.tags.list.fill(unSelectedStyle, 0, itemStyle.tags.list.length);
 
   const [itemStyleState, setItemStyleState] = useState(itemStyle);
+
+  useEffect(() => {
+    const filterState = {
+      category: [""],
+      tags: [""],
+    };
+    if (itemStyleState.category.all === selectedStyle) {
+      filterState.category = props.filterItem.category;
+    } else {
+      itemStyleState.category.list.map((item, i) => {
+        if (item === selectedStyle) {
+          filterState.category.push(props.filterItem.category[i]);
+        }
+      });
+    }
+    if (itemStyleState.tags.all === selectedStyle) {
+      filterState.tags = props.filterItem.tags;
+    } else {
+      itemStyleState.tags.list.map((item, i) => {
+        if (item === selectedStyle) {
+          filterState.tags.push(props.filterItem.tags[i]);
+        }
+      });
+    }
+    props.setFilterState(filterState);
+  }, [itemStyleState]);
 
   const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     const target = event.target as Element;

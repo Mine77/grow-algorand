@@ -2,7 +2,8 @@ import useSWR from "swr";
 import Airtable from "airtable";
 import Layout from "../components/layout/layout";
 import Filter from "../components/projects/filter";
-import ProjectCards, { Cards } from "../components/projects/cards";
+import ProjectCards, { Cards, FilterState } from "../components/projects/cards";
+import { useState } from "react";
 
 export interface CardData {
   Title: string;
@@ -54,18 +55,22 @@ const Projects = () => {
     });
   });
 
+  const [filterState, setFilterState] = useState<FilterState>({
+    category: [""],
+    tags: [""],
+  });
+
   return (
     <Layout>
       <div className="flex flex-row">
         <div className="flex mt-10 border-r-2 border-gray-100">
-          {cards === undefined ? null : <Filter filterItem={filterItem} />}
+          {cards === undefined ? null : (
+            <Filter filterItem={filterItem} setFilterState={setFilterState} />
+          )}
         </div>
         <div className="flex px-4">
           <div>
-            <ProjectCards
-              cards={cards}
-              filterState={{ category: ["Infrastructure"], tags: ["Explorer"] }}
-            />
+            <ProjectCards cards={cards} filterState={filterState} />
           </div>
         </div>
       </div>

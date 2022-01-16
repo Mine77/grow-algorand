@@ -12,7 +12,7 @@ export interface Card {
 
 const ProjectCard = (props: Card) => {
   return (
-    <div className="bg-white w-48 rounded-xl shadow-md mx-2 my-4 hover:scale-105 duration-200 transition-all">
+    <div className="bg-white w-48 rounded-xl shadow-md mx-6 my-4 hover:scale-105 duration-200 transition-all">
       <a href={props.link} target="_blank" rel="noreferrer">
         <div className="p-3">
           <div className="relative w-full h-48 justify-center">
