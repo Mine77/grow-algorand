@@ -35,8 +35,11 @@ const ProjectCard = (props: Card) => {
             <h3 className="text-lg font-bold text-gray-900 ">{props.title}</h3>
           </div>
           <div className="flex flex-wrap justify-start items-start my-1 -ml-1">
-            {props.tags.map((tag) => (
-              <p className="px-2 mx-1 bg-blue-500 text-white rounded-full text-xs">
+            {props.tags.map((tag, i) => (
+              <p
+                key={i}
+                className="px-2 mx-1 bg-blue-500 text-white rounded-full text-xs"
+              >
                 {tag}
               </p>
             ))}
