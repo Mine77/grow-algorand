@@ -13,24 +13,6 @@ const HomeHero = () => {
         Find out the latest ecosystem programs, projects and activities. Learn,
         join, build, earn and so much more!
       </div>
-      <div className="flex flex-row items-center justify-center w-full mx-auto mt-12 text-center">
-        <div className="w-96">
-          <input
-            type="text"
-            name="email"
-            placeholder="Email Address (coming soon)"
-            className="w-full h-12 px-6 py-2 font-medium rounded-full -mr-32 text-gray-800 border-2 border-gray-300 focus: outline-blue-500"
-          />
-        </div>
-        <div>
-          <button
-            type="button"
-            className="items-center w-32 h-12 rounded-full text-base font-bold text-white transition duration-150 ease-in-out bg-blue-600 border border-transparent hover:bg-blue-500"
-          >
-            Subscribe
-          </button>
-        </div>
-      </div>
     </div>
   );
 };
