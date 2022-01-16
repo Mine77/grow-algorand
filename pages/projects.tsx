@@ -2,9 +2,9 @@ import useSWR from "swr";
 import Airtable from "airtable";
 import Layout from "../components/layout/layout";
 import Filter from "../components/projects/filter";
-import ProjectCards from "../components/projects/cards";
+import ProjectCards, { Cards } from "../components/projects/cards";
 
-interface Card {
+export interface CardData {
   Title: string;
   Description: string;
   Link: string;
@@ -13,10 +13,10 @@ interface Card {
   Tags: Array<string>;
 }
 
-interface Cards extends Array<Card> {}
+export interface CardsData extends Array<CardData> {}
 
 interface Paylaod {
-  res: Cards;
+  res: CardsData;
 }
 
 const Projects = () => {
@@ -25,7 +25,17 @@ const Projects = () => {
   const { data, error } = useSWR<Paylaod, string>(url, fetcher);
   if (error) console.log(error);
 
-  const cards = data === undefined ? undefined : data.res;
+  const cardsData = data === undefined ? undefined : data.res;
+  const cards: Cards | undefined = cardsData?.map((cardData) => {
+    return {
+      title: cardData.Title,
+      description: cardData.Description,
+      link: cardData.Link,
+      image: cardData.Image[0].url,
+      category: cardData.Category,
+      tags: cardData.Tags,
+    };
+  });
 
   var filterItem: {
     category: string[];
@@ -36,10 +46,10 @@ const Projects = () => {
   };
 
   cards?.map((card) => {
-    if (!filterItem.category.includes(card.Category)) {
-      filterItem.category.push(card.Category);
+    if (!filterItem.category.includes(card.category)) {
+      filterItem.category.push(card.category);
     }
-    card.Tags.map((tag) => {
+    card.tags.map((tag) => {
       if (!filterItem.tags.includes(tag)) filterItem.tags.push(tag);
     });
   });

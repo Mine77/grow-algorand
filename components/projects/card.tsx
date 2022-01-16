@@ -1,10 +1,16 @@
+import Airtable from "airtable";
 import Image from "next/image";
-const ProjectCard = (props: {
+
+export interface Card {
   title: string;
   description: string;
   link: string;
   image: string;
-}) => {
+  category: string;
+  tags: Array<string>;
+}
+
+const ProjectCard = (props: Card) => {
   return (
     <div className="bg-white w-48 rounded-xl shadow-md mx-2 my-4 hover:scale-105 duration-200 transition-all">
       <a href={props.link} target="_blank" rel="noreferrer">
