@@ -19,19 +19,31 @@ const ProjectCard = (props: Card) => {
             <Image
               layout="fill"
               objectFit="contain"
-              sizes="100%"
               src={props.image}
               alt="item image"
-              priority
             />
           </div>
         </div>
 
-        <div className=" px-3 pb-5">
-          <h3 className="text-lg font-semibold text-gray-900 ">
-            {props.title}
-          </h3>
-          <p className="text-sm font-">{props.description}</p>
+        <div className="mx-3">
+          <div>
+            <p className="subpixel-antialiased font-medium text-blue-500 -my-1">
+              {props.category}
+            </p>
+          </div>
+          <div>
+            <h3 className="text-lg font-bold text-gray-900 ">{props.title}</h3>
+          </div>
+          <div className="flex flex-wrap justify-start items-start my-1 -ml-1">
+            {props.tags.map((tag) => (
+              <p className="px-2 mx-1 bg-blue-500 text-white rounded-full text-xs">
+                {tag}
+              </p>
+            ))}
+          </div>
+          <div>
+            <p className="text-sm mt-4 mb-3">{props.description}</p>
+          </div>
         </div>
       </a>
     </div>
