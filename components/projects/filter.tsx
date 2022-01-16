@@ -1,9 +1,8 @@
-import Link from "next/link";
-import { MouseEventHandler } from "react";
+import { MouseEventHandler, useState } from "react";
 
 const unSelectedStyle =
   "hover:text-gray-800 hover:bg-blue-100  p-2 mx-1 my-2 transition-colors duration-200 flex flex-row items-center text-gray-500 ml-2 text-md font-normal rounded-xl w-full";
-const seletedStyle =
+const selectedStyle =
   "hover:bg-blue-500  p-2 mx-1 my-2 transition-colors duration-200 flex flex-row items-center text-white ml-2 text-md font-normal bg-blue-500 rounded-xl w-full";
 
 interface Props {
@@ -14,13 +13,52 @@ interface Props {
 }
 
 const Filter = (props: Props) => {
+  var itemStyle = {
+    category: {
+      all: selectedStyle,
+      list: new Array<string>(props.filterItem.category.length),
+    },
+    tags: {
+      all: selectedStyle,
+      list: new Array<string>(props.filterItem.tags.length),
+    },
+  };
+  itemStyle.category.list.fill(
+    unSelectedStyle,
+    0,
+    itemStyle.category.list.length
+  );
+  itemStyle.tags.list.fill(unSelectedStyle, 0, itemStyle.tags.list.length);
+
+  const [itemStyleState, setItemStyleState] = useState(itemStyle);
+
   const handleClick: MouseEventHandler<HTMLButtonElement> = (event) => {
     const target = event.target as Element;
-    target.className =
-      target.className === seletedStyle ? unSelectedStyle : seletedStyle;
-    if (target.id === "Category.All") {
-      console.log(target.id);
+    const id = target.id;
+    var itemStyleStateTemp = { ...itemStyleState };
+    const section = id.split(".")[0] as keyof typeof itemStyleStateTemp;
+    const index = id.split(".")[1];
+
+    if (index === "All") {
+      itemStyleStateTemp[section].all =
+        itemStyleStateTemp[section].all === selectedStyle
+          ? unSelectedStyle
+          : selectedStyle;
+      if (itemStyleStateTemp[section].all === selectedStyle) {
+        itemStyleStateTemp[section].list = itemStyleStateTemp[section].list.map(
+          (item) => {
+            return (item = unSelectedStyle);
+          }
+        );
+      }
+    } else {
+      itemStyleStateTemp[section].list[Number(index)] =
+        itemStyleStateTemp[section].list[Number(index)] === selectedStyle
+          ? unSelectedStyle
+          : selectedStyle;
+      itemStyleStateTemp[section].all = unSelectedStyle;
     }
+    setItemStyleState(itemStyleStateTemp);
   };
   return (
     <div className="relative bg-white ">
@@ -32,17 +70,17 @@ const Filter = (props: Props) => {
                 Category
               </p>
               <button
-                id={"Category.All"}
-                className={seletedStyle}
+                id={"category.All"}
+                className={itemStyleState.category.all}
                 onClick={handleClick}
               >
                 All
               </button>
-              {props.filterItem.category.map((item, j) => (
+              {props.filterItem.category.map((item, i) => (
                 <button
-                  key={j}
-                  id={`Category.${item}`}
-                  className={unSelectedStyle}
+                  key={i}
+                  id={`category.${i}`}
+                  className={itemStyleState.category.list[i]}
                   onClick={handleClick}
                 >
                   {item}
@@ -54,17 +92,17 @@ const Filter = (props: Props) => {
                 Tags
               </p>
               <button
-                id={"Tags.All"}
-                className={seletedStyle}
+                id={"tags.All"}
+                className={itemStyleState.tags.all}
                 onClick={handleClick}
               >
                 All
               </button>
-              {props.filterItem.tags.map((item, j) => (
+              {props.filterItem.tags.map((item, i) => (
                 <button
-                  key={j}
-                  id={`Tags.${item}`}
-                  className={unSelectedStyle}
+                  key={i}
+                  id={`tags.${i}`}
+                  className={itemStyleState.tags.list[i]}
                   onClick={handleClick}
                 >
                   {item}

@@ -44,13 +44,11 @@ const Projects = () => {
     });
   });
 
-  console.log(filterItem);
-
   return (
     <Layout>
       <div className="flex flex-row">
         <div className="flex mt-10 border-r-2 border-gray-100">
-          <Filter filterItem={filterItem} />
+          {cards === undefined ? null : <Filter filterItem={filterItem} />}
         </div>
         <div className="flex px-4">
           <div>
