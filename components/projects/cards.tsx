@@ -3,7 +3,15 @@ import ProjectCard, { Card } from "./card";
 
 export interface Cards extends Array<Card> {}
 
-const ProjectCards = (props: { cards: Cards | undefined }) => {
+export interface FilterState {
+  category: string[];
+  tags: string[];
+}
+
+const ProjectCards = (props: {
+  cards: Cards | undefined;
+  filterState: FilterState | undefined;
+}) => {
   return (
     <div className="flex flex-wrap gap-8">
       {props.cards === undefined ? (
@@ -13,15 +21,18 @@ const ProjectCards = (props: { cards: Cards | undefined }) => {
       ) : (
         props.cards.map((card, i) => (
           <div key={i} className="flex">
-            <ProjectCard
-              key={i}
-              title={card.title}
-              description={card.description}
-              link={card.link}
-              image={card.image}
-              category={card.category}
-              tags={card.tags}
-            />
+            {props.filterState?.category.includes(card.category) &&
+            props.filterState?.tags.some((v) => card.tags.includes(v)) ? (
+              <ProjectCard
+                key={i}
+                title={card.title}
+                description={card.description}
+                link={card.link}
+                image={card.image}
+                category={card.category}
+                tags={card.tags}
+              />
+            ) : null}
           </div>
         ))
       )}

@@ -62,7 +62,10 @@ const Projects = () => {
         </div>
         <div className="flex px-4">
           <div>
-            <ProjectCards cards={cards} />
+            <ProjectCards
+              cards={cards}
+              filterState={{ category: ["Infrastructure"], tags: ["Explorer"] }}
+            />
           </div>
         </div>
       </div>
