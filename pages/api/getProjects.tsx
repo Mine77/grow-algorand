@@ -4,7 +4,15 @@ import Airtable from "airtable";
 
 const TableName = "Projects";
 
-const TableKeys = ["Title", "Category", "Description", "Tags", "Link", "Image"];
+const TableKeys = [
+  "Title",
+  "Category",
+  "Description",
+  "Tags",
+  "Link",
+  "Image",
+  "Reviewed",
+];
 const TableView = "Grid view";
 
 export default async function handler(
@@ -25,11 +33,15 @@ export default async function handler(
 
     records.forEach((record) => {
       var data = {};
+      var reviewed = false;
       TableKeys.map((key) => {
         const value = record.get(key);
         data = { ...data, [key]: value };
+        if (key === "Reviewed" && String(value) === "true") {
+          reviewed = true;
+        }
       });
-      dataSet.push(data);
+      if (reviewed) dataSet.push(data);
     });
 
     res.status(200).json({ res: dataSet });
