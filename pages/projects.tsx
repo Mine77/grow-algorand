@@ -71,10 +71,12 @@ const Projects = () => {
             )}
           </div>
           <div className="flex mt-2 items-end justify-end ml-8 mr-2">
-            <Button
-              text="Add Project"
-              link="https://airtable.com/shrHn8BZjnbvF9BJG"
-            />
+            {cards === undefined ? null : (
+              <Button
+                text="Add Project"
+                link="https://airtable.com/shrHn8BZjnbvF9BJG"
+              />
+            )}
           </div>
         </div>
 
