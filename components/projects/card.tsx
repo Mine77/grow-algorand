@@ -38,14 +38,14 @@ const ProjectCard = (props: Card) => {
             {props.tags.map((tag, i) => (
               <p
                 key={i}
-                className="px-2 mx-1 bg-blue-500 text-white rounded-full text-xs"
+                className="px-2 mx-1 my-1 bg-blue-500 text-white rounded-full text-xs"
               >
                 {tag}
               </p>
             ))}
           </div>
           <div>
-            <p className="text-sm mt-4 mb-3">{props.description}</p>
+            <p className="text-sm mt-2 mb-3">{props.description}</p>
           </div>
         </div>
       </a>
