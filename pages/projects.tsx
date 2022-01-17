@@ -3,7 +3,7 @@ import Airtable from "airtable";
 import Layout from "../components/layout/layout";
 import Filter from "../components/projects/filter";
 import ProjectCards, { Cards, FilterState } from "../components/projects/cards";
-import { useState } from "react";
+import { ChangeEventHandler, useState } from "react";
 import Button from "../components/projects/button";
 
 export interface CardData {
@@ -61,29 +61,59 @@ const Projects = () => {
     tags: [""],
   });
 
+  const [keyWordsState, setKeyWordsState] = useState<Array<string>>([""]);
+
+  const handleSearchChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    setKeyWordsState(event.target.value.toLowerCase().split(" "));
+  };
+
   return (
     <Layout>
-      <div className="flex">
-        <div className="flex flex-col mt-2">
-          <div className="flex mt-6 border-r-2 border-gray-100">
-            {cards === undefined ? null : (
-              <Filter filterItem={filterItem} setFilterState={setFilterState} />
-            )}
-          </div>
-          <div className="flex mt-2 items-end justify-end ml-8 mr-2">
-            {cards === undefined ? null : (
-              <Button
-                text="Add Project"
-                link="https://airtable.com/shrHn8BZjnbvF9BJG"
-              />
-            )}
-          </div>
+      {cards === undefined ? (
+        <div className="flex items-center justify-center w-full">
+          <p className="text-xl animate-pulse text-center">Loading...</p>
         </div>
+      ) : (
+        <div className="flex">
+          <div className="flex flex-col mt-2">
+            <div className="flex mt-2 border-r-2 border-gray-100">
+              {cards === undefined ? null : (
+                <Filter
+                  filterItem={filterItem}
+                  setFilterState={setFilterState}
+                />
+              )}
+            </div>
+          </div>
 
-        <div className="flex px-4 mt-12 flex-col">
-          <ProjectCards cards={cards} filterState={filterState} />
+          <div className="flex px-4 flex-col w-full">
+            <div className="mt-4 flex flex-row w-full items-center justify-between mr-20">
+              <div className="basis-1/4 ">
+                <input
+                  type="text"
+                  className="border-gray-200 border-2 rounded-3xl w-full ml-6 focus:border-blue-300 px-4 py-0.5"
+                  placeholder="Search..."
+                  onChange={handleSearchChange}
+                />
+              </div>
+              <div className="basis-1/6 mt-2 mr-24">
+                <Button
+                  text="Add Project"
+                  link="https://airtable.com/shrHn8BZjnbvF9BJG"
+                />
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <ProjectCards
+                cards={cards}
+                filterState={filterState}
+                keyWords={keyWordsState}
+              />
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </Layout>
   );
 };
