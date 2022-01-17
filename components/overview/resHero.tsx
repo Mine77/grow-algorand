@@ -5,17 +5,17 @@ const ResHero = () => {
     {
       title: "I'm a Developer",
       description: "Start with learn and get to earn",
-      link: "#",
+      link: "/resources/learning",
     },
     {
       title: "I'm Building on Algorand",
       description: "Get funding and community support",
-      link: "#",
+      link: "/resources/grant",
     },
     {
       title: "I'm an ALGO Hodler",
       description: "Join governance and more",
-      link: "#",
+      link: "/resources/governance",
     },
   ];
   return (

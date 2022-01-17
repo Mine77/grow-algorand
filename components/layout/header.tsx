@@ -14,12 +14,16 @@ const Header = () => {
 
   const list: HeaderList = [
     {
-      text: "Resources",
-      link: "/resources/learning",
+      text: "Overview",
+      link: "/",
     },
     {
       text: "Projects",
       link: "/projects",
+    },
+    {
+      text: "Resources",
+      link: "/resources/learning",
     },
   ];
 
@@ -33,16 +37,12 @@ const Header = () => {
             </span>
           </a>
         </div>
-        <div className="top-0 left-0 items-end hidden w-full h-full p-4 text-sm bg-gray-900 bg-opacity-50 md:items-center md:w-3/4 lg:text-base md:bg-transparent md:p-0 md:relative md:flex">
-          <div className="flex-col w-full h-auto overflow-hidden bg-white rounded-lg md:bg-transparent md:overflow-visible md:rounded-none md:relative md:flex md:flex-row">
-            <div className="flex flex-col items-start justify-center w-full space-x-6 text-center lg:space-x-8 md:w-2/3 md:mt-0 md:flex-row md:items-center">
-              {list.map((item, i) => (
-                <Link key={i} href={item.link} passHref>
-                  <a className={HeaderItemStyle.unSelectedStyle}>{item.text}</a>
-                </Link>
-              ))}
-            </div>
-          </div>
+        <div className="flex top-0 left-0 items-center justify-end w-3/4 h-full p-4 bg-gray-900 text-base bg-transparent">
+          {list.map((item, i) => (
+            <Link key={i} href={item.link} passHref>
+              <a className={HeaderItemStyle.unSelectedStyle}>{item.text}</a>
+            </Link>
+          ))}
         </div>
       </div>
     </nav>
