@@ -4,6 +4,7 @@ import Layout from "../components/layout/layout";
 import Filter from "../components/projects/filter";
 import ProjectCards, { Cards, FilterState } from "../components/projects/cards";
 import { useState } from "react";
+import Button from "../components/projects/button";
 
 export interface CardData {
   Title: string;
@@ -62,16 +63,23 @@ const Projects = () => {
 
   return (
     <Layout>
-      <div className="flex flex-row">
-        <div className="flex mt-10 border-r-2 border-gray-100">
-          {cards === undefined ? null : (
-            <Filter filterItem={filterItem} setFilterState={setFilterState} />
-          )}
-        </div>
-        <div className="flex px-4">
-          <div>
-            <ProjectCards cards={cards} filterState={filterState} />
+      <div className="flex">
+        <div className="flex flex-col mt-2">
+          <div className="flex mt-6 border-r-2 border-gray-100">
+            {cards === undefined ? null : (
+              <Filter filterItem={filterItem} setFilterState={setFilterState} />
+            )}
           </div>
+          <div className="flex mt-2 items-end justify-end ml-8 mr-2">
+            <Button
+              text="Add Project"
+              link="https://airtable.com/shrHn8BZjnbvF9BJG"
+            />
+          </div>
+        </div>
+
+        <div className="flex px-4 mt-12 flex-col">
+          <ProjectCards cards={cards} filterState={filterState} />
         </div>
       </div>
     </Layout>
