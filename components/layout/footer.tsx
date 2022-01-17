@@ -5,6 +5,7 @@ const Footer = () => {
         href="https://github.com/Mine77"
         className="text-xl font-black leading-none text-gray-900 select-none logo"
         target="_blank"
+        rel="noreferrer"
       >
         Mine77
       </a>
